@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "65006895e01b69fa17c97ee9"
+  },
+  "username": "hanna123",
+  "password": "545carbike",
+  "Email": "hanna@yahoo.com",
+  "Birthday": {
+    "$date": "1995-11-19T00:00:00.000Z"
+  },
+  "favorites": [
+    "The Matrix",
+    "Inglourious Basterds",
+    "The Godfather"
+  ]
+},
+{
+  "_id": {
+    "$oid": "650068cde01b69fa17c97eea"
+  },
+  "username": "anna11",
+  "password": "999londonXx",
+  "Email": "anna@yahoo.com",
+  "Birthday": {
+    "$date": "2000-11-10T00:00:00.000Z"
+  },
+  "favorites": [
+    "Inglourious Basterds"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65006955e01b69fa17c97eec"
+  },
+  "username": "maya",
+  "password": "catstoys97",
+  "Email": "mayak@yahoo.com",
+  "Birthday": {
+    "$date": "1999-07-04T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6500699ee01b69fa17c97eed"
+  },
+  "username": "louis",
+  "password": "laptop45",
+  "Email": "louis8@yahoo.com",
+  "Birthday": {
+    "$date": "1989-04-04T00:00:00.000Z"
+  },
+  "favorites": [
+    "The Matrix"
+  ]
+}]

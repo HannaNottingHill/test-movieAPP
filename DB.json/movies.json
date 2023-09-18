@@ -1,0 +1,172 @@
+[{
+  "_id": {
+    "$oid": "64ff0ec6e01b69fa17c97ede"
+  },
+  "Title": "Silence of the Lambs",
+  "Description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+  "Genre": {
+    "Name": "Thriller",
+    "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+  "Director": {
+    "Name": "Jonathan Demme",
+    "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+    "Birth": "1944",
+    "Death": "2017"
+  },
+  "ImagePath": "silenceofthelambs.png",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "64ff77d0e01b69fa17c97ee0"
+  },
+  "Title": "The Shawshank Redemption",
+  "Description": "A man is wrongly imprisoned for murder and forms a deep bond with a fellow inmate while seeking freedom.",
+  "Genre": {
+    "Name": "Drama",
+    "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+  "Director": {
+    "Name": "Jonathan Demme",
+    "Bio": "American director known for 'The Shawshank Redemption'. Emphasizes hope and human spirit."
+  },
+  "ImagePath": "https://m.media-amazon.com/images/S/pv-target-images/169dfa295bcd5cb7a09175b076f41a8ae4c1fbe8ba94cf5baf051160bb1564de.jpg",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "64ff781ae01b69fa17c97ee1"
+  },
+  "Title": "The Godfather",
+  "Description": "The aging patriarch of an organized crime dynasty transfers control of his empire to his reluctant son.",
+  "Genre": {
+    "Name": "Crime",
+    "Description": "Crime films revolve around criminal activities, investigations, and the criminal underworld. They often feature heists, organized crime, detectives, and moral dilemmas."
+  },
+  "Director": {
+    "Name": "Francis Ford Coppola",
+    "Bio": "Director of 'The Godfather' trilogy, influential in cinema history."
+  },
+  "ImagePath": "https://chiswickcalendar.co.uk/wp-content/uploads/2022/03/The-Godfather-1.jpg",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "64ff8152e01b69fa17c97ee2"
+  },
+  "Title": "Pulp Fiction",
+  "Description": " The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in a series of darkly comedic events.",
+  "Genre": {
+    "Name": "Crime",
+    "Description": "Crime films revolve around criminal activities, investigations, and the criminal underworld. They often feature heists, organized crime, detectives, and moral dilemmas."
+  },
+  "Director": {
+    "Name": "Quentin Tarantino",
+    "Bio": "Provocative filmmaker known for 'Pulp Fiction' and 'Inglourious Basterds'"
+  },
+  "ImagePath": "https://cloudfront-us-east-1.images.arcpublishing.com/opb/MTN4BWMFWVERVCTS4QTJ2FNXSQ.jpg",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "64ff8237e01b69fa17c97ee3"
+  },
+  "Title": "Inception",
+  "Description": "A thief who enters the dreams of others to steal their secrets embarks on a final, mind-bending heist.",
+  "Genre": {
+    "Name": "Sci-Fi",
+    "Description": "Science fiction films delve into speculative concepts that are often based on futuristic technology, outer space, time travel, and scientific advancements. They challenge the boundaries of reality and imagination."
+  },
+  "Director": {
+    "Name": "Christopher Nolan",
+    "Bio": "British-American director known for mind-bending narratives, 'Inception' and 'The Dark Knight.'"
+  },
+  "ImagePath": "https://flxt.tmsimg.com/assets/p7825626_p_v8_af.jpg",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "64ff8313e01b69fa17c97ee4"
+  },
+  "Title": "The Dark Knight",
+  "Description": "Batman faces off against his most formidable adversary, the Joker, in a battle of chaos and order.",
+  "Genre": {
+    "Name": "Action",
+    "Description": "Action films are known for their high-intensity sequences, including physical combat, stunts, and thrilling chases. They often involve heroes facing formidable adversaries."
+  },
+  "Director": {
+    "Name": "Christopher Nolan",
+    "Bio": "British-American director known for mind-bending narratives, 'Inception' and 'The Dark Knight.'"
+  },
+  "ImagePath": "https://musicart.xboxlive.com/7/abb02f00-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "64ff83a8e01b69fa17c97ee5"
+  },
+  "Title": "Forrest Gump",
+  "Description": "Forrest Gump is a heartwarming drama that follows the extraordinary life of a simple man, played by Tom Hanks, as he inadvertently shapes key moments in American history.",
+  "Genre": {
+    "Name": "Drama",
+    "Description": "Drama films are characterized by their emphasis on realistic characters and emotional storytelling. They often explore complex human relationships and tackle deep and thought-provoking themes."
+  },
+  "Director": {
+    "Name": "Robert Zemeckis",
+    "Bio": "Versatile filmmaker, 'Forrest Gump' director, known for visual effects."
+  },
+  "ImagePath": "https://flxt.tmsimg.com/assets/p15829_v_v13_aa.jpg",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "65002b9de01b69fa17c97ee6"
+  },
+  "Title": "Schindler's List",
+  "Description": "In World War II, a German businessman saves the lives of more than a thousand Polish-Jewish refugees.",
+  "Genre": {
+    "Name": " Drama",
+    "Description": "Drama films are characterized by their emphasis on realistic characters and emotional storytelling. They often explore complex human relationships and tackle deep and thought-provoking themes."
+  },
+  "Director": {
+    "Name": "Steven Spielberg",
+    "Bio": "Iconic director with a wide range of genres, 'Schindler's List' and adventure blockbusters."
+  },
+  "ImagePath": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "65002deee01b69fa17c97ee7"
+  },
+  "Title": "The Matrix",
+  "Description": "A computer hacker discovers a hidden reality and joins a group of rebels fighting against a machine-dominated world.",
+  "Genre": {
+    "Name": "Sci-Fi",
+    "Description": "Science fiction films delve into speculative concepts that are often based on futuristic technology, outer space, time travel, and scientific advancements. They challenge the boundaries of reality and imagination."
+  },
+  "Director": {
+    "Name": "The Wachowskis",
+    "Bio": "The Wachowskis are American filmmakers known for groundbreaking movies such as 'The Matrix' and 'Cloud Atlas.'"
+  },
+  "ImagePath": "https://static.wikia.nocookie.net/matrix/images/5/56/The_Matrix_digital_release_cover.jpg/revision/latest?cb=20210908111245",
+  "Featured": true
+},
+{
+  "_id": {
+    "$oid": "65002eb6e01b69fa17c97ee8"
+  },
+  "Title": "Inglourious Basterds",
+  "Description": "In Nazi-occupied France, a group of Jewish-American soldiers plots to assassinate Nazi leaders during a movie premiere.",
+  "Genre": {
+    "Name": "War",
+    "Description": "War films center on armed conflicts and the experiences of soldiers and civilians during wartime. They explore themes of heroism, sacrifice, and the impact of war on individuals and societies."
+  },
+  "Director": {
+    "Name": "Quentin Tarantino",
+    "Bio": "Provocative filmmaker known for 'Pulp Fiction' and 'Inglourious Basterds'"
+  },
+  "ImagePath": "https://upload.wikimedia.org/wikipedia/en/c/c3/Inglourious_Basterds_poster.jpg",
+  "Featured": true
+}]
