@@ -1,55 +1,130 @@
-[{
-  "_id": {
-    "$oid": "65006895e01b69fa17c97ee9"
+[
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee9"
+    },
+    "username": "samantha_jc",
+    "password": "London123",
+    "email": "samantha@yahoo.com",
+    "birthday": {
+      "$date": "1995-11-19T00:00:00.000Z"
+    },
+    "favorites": [
+      "Silence of the Lambs",
+      "The Shawshank Redemption",
+      "The Godfather"
+    ]
   },
-  "username": "hanna123",
-  "password": "545carbike",
-  "Email": "hanna@yahoo.com",
-  "Birthday": {
-    "$date": "1995-11-19T00:00:00.000Z"
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee8"
+    },
+    "username": "john_doe",
+    "password": "p@ssw0rd",
+    "email": "john@example.com",
+    "birthday": {
+      "$date": "1980-05-15T00:00:00.000Z"
+    },
+    "favorites": ["Pulp Fiction", "The Shawshank Redemption", "The Godfather"]
   },
-  "favorites": [
-    "The Matrix",
-    "Inglourious Basterds",
-    "The Godfather"
-  ]
-},
-{
-  "_id": {
-    "$oid": "650068cde01b69fa17c97eea"
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee7"
+    },
+    "username": "sarah_smith",
+    "password": "secret123",
+    "email": "sarah@gmail.com",
+    "birthday": {
+      "$date": "1992-08-30T00:00:00.000Z"
+    },
+    "favorites": ["Avatar", "Titanic", "The Revenant"]
   },
-  "username": "anna11",
-  "password": "999londonXx",
-  "Email": "anna@yahoo.com",
-  "Birthday": {
-    "$date": "2000-11-10T00:00:00.000Z"
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee6"
+    },
+    "username": "mikeJohnson",
+    "password": "myPassword",
+    "email": "mike@yahoo.com",
+    "birthday": {
+      "$date": "1988-03-10T00:00:00.000Z"
+    },
+    "favorites": ["Forrest Gump", "The Dark Knight", "Gladiator"]
   },
-  "favorites": [
-    "Inglourious Basterds"
-  ]
-},
-{
-  "_id": {
-    "$oid": "65006955e01b69fa17c97eec"
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee5"
+    },
+    "username": "emily_white",
+    "password": "securePass",
+    "email": "emily@gmail.com",
+    "birthday": {
+      "$date": "1990-12-25T00:00:00.000Z"
+    },
+    "favorites": ["The Lord of the Rings", "Inception", "Interstellar"]
   },
-  "username": "maya",
-  "password": "catstoys97",
-  "Email": "mayak@yahoo.com",
-  "Birthday": {
-    "$date": "1999-07-04T00:00:00.000Z"
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee4"
+    },
+    "username": "davidSmith",
+    "password": "davidPass",
+    "email": "david@example.com",
+    "birthday": {
+      "$date": "1975-09-08T00:00:00.000Z"
+    },
+    "favorites": ["Jurassic Park", "The Avengers", "The Social Network"]
+  },
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee3"
+    },
+    "username": "olivia_brown",
+    "password": "brown123",
+    "email": "olivia@yahoo.com",
+    "birthday": {
+      "$date": "1987-06-14T00:00:00.000Z"
+    },
+    "favorites": [
+      "E.T. the Extra-Terrestrial",
+      "The Terminator",
+      "The Silence of the Lambs"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee2"
+    },
+    "username": "jamesWilson",
+    "password": "jamesPass",
+    "email": "james@gmail.com",
+    "birthday": {
+      "$date": "1998-04-03T00:00:00.000Z"
+    },
+    "favorites": ["Jaws", "Star Wars: Episode IV - A New Hope", "The Departed"]
+  },
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee1"
+    },
+    "username": "sophia_martin",
+    "password": "sophiaPass",
+    "email": "sophia@example.com",
+    "birthday": {
+      "$date": "1993-02-22T00:00:00.000Z"
+    },
+    "favorites": ["The Shawshank Redemption", "Inception", "The Green Mile"]
+  },
+  {
+    "_id": {
+      "$oid": "65006895e01b69fa17c97ee0"
+    },
+    "username": "william_thompson",
+    "password": "williamPass",
+    "email": "william@yahoo.com",
+    "birthday": {
+      "$date": "1984-07-17T00:00:00.000Z"
+    },
+    "favorites": ["Fight Club", "The Dark Knight", "Pulp Fiction"]
   }
-},
-{
-  "_id": {
-    "$oid": "6500699ee01b69fa17c97eed"
-  },
-  "username": "louis",
-  "password": "laptop45",
-  "Email": "louis8@yahoo.com",
-  "Birthday": {
-    "$date": "1989-04-04T00:00:00.000Z"
-  },
-  "favorites": [
-    "The Matrix"
-  ]
-}]
+]
