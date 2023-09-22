@@ -1,5 +1,13 @@
-const express = require("express");
+const express = require("express"),
+  bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+const auth = require("./auth")(app);
+const passport = require("passport");
+require("./passport");
+
 const morgan = require("morgan");
 const uuid = require("uuid");
 const path = require("path");
@@ -54,15 +62,19 @@ app.get("/", (req, res) => {
 });
 
 //Get a list of ALL movies
-app.get("/movies", async (req, res) => {
-  try {
-    const movies = await Movies.find();
-    res.status(200).json(movies);
-  } catch (error) {
-    console.log(error);
-    res.status(404).send("Not found");
+app.get(
+  "/movies",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const movies = await Movies.find();
+      res.status(200).json(movies);
+    } catch (error) {
+      console.log(error);
+      res.status(404).send("Not found");
+    }
   }
-});
+);
 
 //Get data about a single movie by title
 app.get("/movies/:title", async (req, res) => {
@@ -108,7 +120,7 @@ app.get("/movies/director/:name", async (req, res) => {
   }
 });
 
-//Add a new user !!/; ////THIS
+//Add a new user
 app.post("/users", async (req, res) => {
   try {
     const user = await Users.findOne({ username: req.body.username });
@@ -125,27 +137,6 @@ app.post("/users", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send("Error: " + error);
-  }
-});
-
-// Create a new user
-app.post("/users", async (req, res) => {
-  try {
-    // Create a new User instance from the request body
-    const newUser = new User({
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-      birthday: req.body.birthday,
-    });
-
-    // Save the user to the database
-    await newUser.save();
-
-    res.status(201).json(newUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Could not create user." });
   }
 });
 
@@ -172,26 +163,41 @@ app.get("/users/:username", async (req, res) => {
 });
 
 //Update a user's information (username)
-app.put("/users/:username", async (req, res) => {
-  try {
-    const updatedUser = await Users.findOneAndUpdate(
-      { username: req.params.username },
-      {
-        $set: {
-          username: req.body.username,
-          password: req.body.password,
-          email: req.body.email,
-          birthday: req.body.birthday,
-        },
-      },
-      { new: true }
-    );
-    res.json(updatedUser);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error: " + err);
+app.put(
+  "/users/:username",
+  passport.authenticate("jwt", {
+    session: false,
+  }),
+  async (req, res) => {
+    try {
+      const existingUser = await Users.findOne({
+        username: req.params.username,
+      });
+
+      //check if the user exists
+      if (!existingUser) {
+        returnres.status(404).send("User not found");
+      }
+
+      // Check if the username in the JWT payload matches the requested username
+      if (req.user.username !== req.params.username) {
+        return res.status(400).send("Permission denied");
+      }
+
+      existingUser.username = req.body.username;
+      existingUser.password = req.body.password;
+      existingUser.email = req.body.email;
+      existingUser.birthday = req.body.birthday;
+
+      const updatedUser = await existingUser.save();
+
+      res.json(updatedUser);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    }
   }
-});
+);
 
 // Add a movie to a user's favorites list
 app.post("/users/:username/:movieId", async (req, res) => {
