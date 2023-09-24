@@ -4,6 +4,9 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
+const cors = require("cors");
+app.use(cors());
+
 const auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
@@ -11,6 +14,8 @@ require("./passport");
 const morgan = require("morgan");
 const uuid = require("uuid");
 const path = require("path");
+
+const { check, validationResult } = require("express-validator");
 
 const fs = require("fs");
 const mongoose = require("mongoose");
@@ -121,24 +126,42 @@ app.get("/movies/director/:name", async (req, res) => {
 });
 
 //Add a new user
-app.post("/users", async (req, res) => {
-  try {
-    const user = await Users.findOne({ username: req.body.username });
-    if (user) {
-      return res.status(400).send(req.body.username + " already exists");
+app.post(
+  "/users",
+  [
+    check("username", "Username is required.").isLength({ min: 5 }),
+    check(
+      "username",
+      "Username contains non alphanumeric characters - not allowed."
+    ).isAlphanumeric(),
+    check("password", "Password is required.").not().isEmpty(),
+    check("email", "Email does not appear to be valid.").isEmail(),
+  ],
+  async (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
     }
-    const newUser = await Users.create({
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-      birthday: req.body.birthday,
-    });
-    res.status(201).json(newUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error: " + error);
+
+    let hashPassword = Users.hashPassword(req.body.password);
+    try {
+      const user = await Users.findOne({ username: req.body.username });
+      if (user) {
+        return res.status(400).send(req.body.username + " already exists");
+      }
+      const newUser = await Users.create({
+        username: req.body.username,
+        password: hashPassword,
+        email: req.body.email,
+        birthday: req.body.birthday,
+      });
+      res.status(201).json(newUser);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    }
   }
-});
+);
 
 // Get all users
 app.get("/users", async (req, res) => {
@@ -157,8 +180,8 @@ app.get("/users/:username", async (req, res) => {
     const user = await Users.findOne({ username: req.params.username });
     res.json(user);
   } catch (err) {
-    console.error(error);
-    res.status(500).send("Error: " + error);
+    console.error(err);
+    res.status(500).send("Error: " + err);
   }
 });
 
@@ -168,7 +191,20 @@ app.put(
   passport.authenticate("jwt", {
     session: false,
   }),
+  [
+    check("username", "Username is required.").not().isEmpty(),
+    check(
+      "username",
+      "Username contains nonalphanumeric characters - not allowed."
+    ).isAlphanumeric(),
+    check("password", "Password is required.").isEmpty(),
+    check("email", "Email is required.").isEmail(),
+  ],
   async (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
     try {
       const existingUser = await Users.findOne({
         username: req.params.username,
@@ -176,7 +212,7 @@ app.put(
 
       //check if the user exists
       if (!existingUser) {
-        returnres.status(404).send("User not found");
+        return res.status(404).send("User not found");
       }
 
       // Check if the username in the JWT payload matches the requested username
@@ -271,8 +307,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something went wrong!");
 });
 
-//server port 3000
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+  console.log("Listening on Port " + port);
 });
