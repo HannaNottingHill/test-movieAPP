@@ -81,7 +81,7 @@ app.get(
   }
 );
 
-//Get data about a single movie by title
+//Get data about a single movie by title. .
 app.get("/movies/:title", async (req, res) => {
   try {
     const movie = await Movies.findOne({ title: req.params.title });
