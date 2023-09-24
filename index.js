@@ -63,7 +63,7 @@ app.get("/", (req, res) => {
 
 app.get("/", (req, res) => {
   res.send("Welcome to my movie API!");
-  // You can replace this message with your own.
+  // You can replace this message with your own
 });
 
 //Get a list of ALL movies
@@ -81,7 +81,7 @@ app.get(
   }
 );
 
-//Get data about a single movie by title. .
+//Get data about a single movie by title
 app.get("/movies/:title", async (req, res) => {
   try {
     const movie = await Movies.findOne({ title: req.params.title });
