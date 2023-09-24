@@ -110,7 +110,7 @@ app.get("/movies/genre/:title", async (req, res) => {
   }
 });
 
-//Get data about the director by name
+//Get data about the director by name.
 app.get("/movies/director/:name", async (req, res) => {
   try {
     const directorName = req.params.name;
