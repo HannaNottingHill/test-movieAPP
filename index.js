@@ -30,7 +30,7 @@ const { error } = require("console");
 app.use(express.json());
 
 mongoose
-  .connect("process.env.CONNECTION_URI", {
+  .connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
