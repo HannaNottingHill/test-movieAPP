@@ -30,13 +30,10 @@ const { error } = require("console");
 app.use(express.json());
 
 mongoose
-  .connect(
-    "mongodb+srv://movieApp:159753mnJK@movieapp.vasbwq5.mongodb.net/MovieApp?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.CONNECTION_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((e) => {
     console.log("successfully connected to DB");
   })
@@ -51,11 +48,6 @@ app.use(morgan("dev"));
 // a ‘log.txt’ file is created in root directory
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
-});
-
-//default text response when at /
-app.get("/", (req, res) => {
-  res.send("Welcome to MoviesApp!");
 });
 
 //APIs
