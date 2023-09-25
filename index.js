@@ -31,7 +31,7 @@ const { error } = require("console");
 app.use(express.json());
 
 mongoose
-  .connect("mongodb://localhost:27017/cfDB", {
+  .connect("process.env.CONNECTION_URI", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -63,7 +63,6 @@ app.get("/", (req, res) => {
 
 app.get("/", (req, res) => {
   res.send("Welcome to my movie API!");
-  // You can replace this message with your own
 });
 
 //Get a list of ALL movies
