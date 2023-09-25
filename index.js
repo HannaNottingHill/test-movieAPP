@@ -10,6 +10,7 @@ app.use(cors());
 const auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
+const bcrypt = require("bcrypt");
 
 const morgan = require("morgan");
 const uuid = require("uuid");
@@ -24,8 +25,6 @@ const Models = require("./models");
 const Movies = Models.Movie;
 const Users = Models.User;
 
-const moviesData = require("./DB.json/movies.json");
-const usersData = require("./DB.json/users.json");
 const { error } = require("console");
 
 app.use(express.json());
@@ -178,9 +177,9 @@ app.get("/users/:username", async (req, res) => {
   try {
     const user = await Users.findOne({ username: req.params.username });
     res.json(user);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error: " + err);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error: " + error);
   }
 });
 
@@ -295,14 +294,14 @@ app.delete("/users/:username", async (req, res) => {
       res.status(400).send(req.params.username + " was not found");
     }
     res.status(200).send(req.params.username + " was deleted.");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error: " + err);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error: " + error);
   }
 });
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
+app.use((error, req, res, next) => {
+  console.error(error.stack);
   res.status(500).send("Something went wrong!");
 });
 
