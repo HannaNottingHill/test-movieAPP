@@ -30,10 +30,13 @@ const { error } = require("console");
 app.use(express.json());
 
 mongoose
-  .connect(process.env.CONNECTION_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://movieApp:159753mnJK@movieapp.vasbwq5.mongodb.net/MovieApp?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then((e) => {
     console.log("successfully connected to DB");
   })
@@ -42,7 +45,6 @@ mongoose
   });
 
 app.use(express.static("public"));
-app.use(morgan("dev"));
 
 // create a write stream (in append mode)
 // a ‘log.txt’ file is created in root directory
