@@ -30,10 +30,13 @@ const { error } = require("console");
 app.use(express.json());
 
 mongoose
-  .connect(process.env.CONNECTION_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://movieApp:159753mnJK@movieapp.vasbwq5.mongodb.net/MovieApp?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then((e) => {
     console.log("successfully connected to DB");
   })
@@ -49,9 +52,6 @@ app.use(morgan("dev"));
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
 });
-
-//set up logger
-app.use(morgan("combined", { stream: accessLogStream }));
 
 //default text response when at /
 app.get("/", (req, res) => {
