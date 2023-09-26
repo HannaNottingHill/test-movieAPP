@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy,
   Models = require("./models.js"),
@@ -41,7 +43,7 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: "mySecretKey123!@",
+      secretOrKey: process.env.jwtSecret,
     },
     async (jwtPayload, callback) => {
       return await Users.findById(jwtPayload._id)

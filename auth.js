@@ -1,4 +1,4 @@
-const jwtSecret = "mySecretKey123!@"; // This has to be the same key used in the JWTStrategy
+require("dotenv").config();
 
 const jwt = require("jsonwebtoken"),
   passport = require("passport");
@@ -18,7 +18,7 @@ module.exports = (router) => {
   router.post("/login", (req, res) => {
     passport.authenticate("local", { session: false }, (error, user, info) => {
       if (error || !user) {
-        return res.status(400).json({
+        return res.status(403).json({
           message: "Something is not right",
           user: user,
         });
