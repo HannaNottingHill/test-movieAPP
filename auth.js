@@ -1,10 +1,9 @@
 require("dotenv").config();
-
 const jwt = require("jsonwebtoken"),
   passport = require("passport");
 
 require("./passport"); // Your local passport file
-
+const jwtSecret = process.env.JWT_SECRET;
 let generateJWTToken = (user) => {
   return jwt.sign(user, jwtSecret, {
     subject: user.username, // This is the username you’re encoding in the JWT

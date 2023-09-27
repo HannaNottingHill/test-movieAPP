@@ -8,3 +8,4 @@
 ::1 - - [25/Sep/2023:12:57:52 +0000] "POST /users HTTP/1.1" 201 220 "-" "PostmanRuntime/7.33.0"
 ::1 - - [25/Sep/2023:12:58:53 +0000] "POST /users/tommy1212 HTTP/1.1" 404 155 "-" "PostmanRuntime/7.33.0"
 ::1 - - [25/Sep/2023:12:59:02 +0000] "PUT /users/tommy1212 HTTP/1.1" 401 - "-" "PostmanRuntime/7.33.0"
+GET /users 200 440 - 80.364 ms

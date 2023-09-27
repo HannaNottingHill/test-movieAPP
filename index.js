@@ -6,8 +6,6 @@ const express = require("express"),
 const cors = require("cors");
 const passport = require("passport");
 
-require("./passport");
-
 const morgan = require("morgan");
 const path = require("path");
 
@@ -15,6 +13,8 @@ const { check, validationResult } = require("express-validator");
 
 const fs = require("fs");
 const mongoose = require("mongoose");
+
+require("./passport");
 
 const Models = require("./models");
 const app = express();
@@ -46,6 +46,8 @@ app.use(express.static("public"));
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
 });
+
+app.use(morgan("combined", { stream: accessLogStream }));
 
 //APIs
 
