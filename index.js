@@ -56,19 +56,15 @@ app.get("/", (req, res) => {
 });
 
 //Get a list of ALL movies
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    try {
-      const movies = await Movies.find();
-      res.status(200).json(movies);
-    } catch (error) {
-      console.log(error);
-      res.status(404).send("Not found");
-    }
+app.get("/movies", async (req, res) => {
+  try {
+    const movies = await Movies.find();
+    res.status(200).json(movies);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send("Not found");
   }
-);
+});
 
 //Get data about a single movie by title
 app.get("/movies/:title", async (req, res) => {
