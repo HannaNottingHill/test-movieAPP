@@ -1,12 +1,12 @@
-const passport = require("passport"),
-  LocalStrategy = require("passport-local").Strategy,
-  Models = require("./models.js"),
-  passportJWT = require("passport-jwt");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const Models = require("./models.js");
+const passportJWT = require("passport-jwt");
 
 const jwtSecret = process.env.JWT_SECRET;
-let Users = Models.User,
-  JWTStrategy = passportJWT.Strategy,
-  ExtractJWT = passportJWT.ExtractJwt;
+const Users = Models.User;
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
 
 passport.use(
   new LocalStrategy(
@@ -24,14 +24,15 @@ passport.use(
             message: "Incorrect username or password.",
           });
         }
-        if (!user.validatePassword(password)) {
-          console.log("incorrect password");
+        const isValidPassword = await user.validatePassword(password);
+        if (!isValidPassword) {
+          console.log("Incorrect password");
           return callback(null, false, { message: "Incorrect password." });
         }
-        console.log("finished");
+        console.log("Finished");
         return callback(null, user);
       } catch (error) {
-        console.log(error);
+        console.error(error);
         return callback(error);
       }
     }
@@ -45,13 +46,17 @@ passport.use(
       secretOrKey: jwtSecret,
     },
     async (jwtPayload, callback) => {
-      return await Users.findById(jwtPayload._id)
-        .then((user) => {
-          return callback(null, user);
-        })
-        .catch((error) => {
-          return callback(error);
-        });
+      try {
+        const user = await Users.findById(jwtPayload._id);
+        if (!user) {
+          console.log("User not found");
+          return callback(null, false);
+        }
+        return callback(null, user);
+      } catch (error) {
+        console.error(error);
+        return callback(error);
+      }
     }
   )
 );

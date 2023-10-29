@@ -21,9 +21,10 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+
 app.use(bodyParser.json());
 app.use(express.json());
-
+require("./auth")(app);
 const Movies = Models.Movie;
 const Users = Models.User;
 
