@@ -140,10 +140,6 @@ app.post(
 
     let hashPassword = Users.hashPassword(req.body.password);
     try {
-      const user = await Users.findOne({ username: req.body.username });
-      if (user) {
-        return res.status(400).send(req.body.username + " already exists");
-      }
       const newUser = await Users.create({
         username: req.body.username,
         password: hashPassword,
@@ -157,6 +153,26 @@ app.post(
     }
   }
 );
+
+// Endpoint to check if a username exists
+app.get("/users/check-username/:username", async (req, res) => {
+  const user = await Users.findOne({ username: req.params.username });
+  if (user) {
+    res.status(400).json({ message: "Username already exists" });
+  } else {
+    res.status(200).json({ message: "Username available" });
+  }
+});
+
+// Endpoint to check if an email exists
+app.get("/users/check-email/:email", async (req, res) => {
+  const user = await Users.findOne({ email: req.params.email });
+  if (user) {
+    res.status(400).json({ message: "Email already exists" });
+  } else {
+    res.status(200).json({ message: "Email available" });
+  }
+});
 
 // Get all users
 app.get("/users", async (req, res) => {
@@ -233,16 +249,14 @@ app.put(
 );
 
 // Add a movie to a user's favorites list
-app.post("/users/:username/:movieId", async (req, res) => {
+app.post("/users/:username/:movieId/", async (req, res) => {
   try {
     const updatedUser = await Users.findOneAndUpdate(
       { username: req.params.username },
-      {
-        $push: { favorites: req.params.movieId },
-      },
+      { $addToSet: { favorites: req.params.movieId } }, // Use $addToSet to avoid duplicates
       { new: true }
     );
-    res.json(updatedUser);
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error: " + error);
