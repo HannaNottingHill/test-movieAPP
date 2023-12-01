@@ -208,7 +208,7 @@ app.put(
       "username",
       "Username contains nonalphanumeric characters - not allowed."
     ).isAlphanumeric(),
-    check("password", "Password is required.").isEmpty(),
+    check("password").optional(),
     check("email", "Email is required.").isEmail(),
   ],
   async (req, res) => {
@@ -231,6 +231,17 @@ app.put(
         return res.status(400).send("Permission denied");
       }
 
+      // If updating the password, ensure it's processed correctly
+      if (req.body.password) {
+        try {
+          let hashPassword = Users.hashPassword(req.body.password);
+          existingUser.password = hashPassword;
+        } catch (error) {
+          console.error("Error hashing password:", error);
+          return res.status(500).send("Error updating password");
+        }
+      }
+
       let hashPassword = Users.hashPassword(req.body.password);
 
       existingUser.username = req.body.username;
@@ -249,13 +260,21 @@ app.put(
 );
 
 // Add a movie to a user's favorites list
-app.post("/users/:username/:movieId/", async (req, res) => {
+app.post("/users/:username/movies/:movieId", async (req, res) => {
+  // Changed endpoint to be more RESTful
   try {
+    const user = await Users.findOne({ username: req.params.username }); // Find the user first
+
+    if (!user) {
+      return res.status(404).send("User not found"); // Handle case where user doesn't exist
+    }
+
     const updatedUser = await Users.findOneAndUpdate(
       { username: req.params.username },
       { $addToSet: { favorites: req.params.movieId } }, // Use $addToSet to avoid duplicates
       { new: true }
     );
+
     res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
@@ -264,36 +283,25 @@ app.post("/users/:username/:movieId/", async (req, res) => {
 });
 
 // Remove a movie from the favorites list
-app.delete("/users/:username/:movieId", async (req, res) => {
+app.delete("/users/:username/movies/:movieId", async (req, res) => {
+  // Changed endpoint to be more RESTful
   try {
-    const username = req.params.username;
-    const movieId = req.params.movieId;
-    const user = await Users.findOne({ username: username });
+    const user = await Users.findOne({ username: req.params.username });
 
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).send("User not found"); // Handle case where user doesn't exist
     }
 
-    // Check if user has favorites array, and if not, initialize it as an empty array
-    if (!user.favorites) {
-      user.favorites = [];
-    }
-
-    // Filter out the movie from the favorites
-    const filteredMovies = user.favorites.filter(
-      (currentMovieId) => currentMovieId.toString() !== movieId
+    const updatedUser = await Users.findOneAndUpdate(
+      { username: req.params.username },
+      { $pull: { favorites: req.params.movieId } }, // Use $pull to remove the movieId from favorites
+      { new: true }
     );
 
-    // Update the user's favorites
-    user.favorites = filteredMovies;
-
-    // Save the updated user
-    await user.save();
-
-    res.status(200).send("Movie removed from favorites successfully");
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error: " + error.message);
+    res.status(500).send("Error: " + error);
   }
 });
 
