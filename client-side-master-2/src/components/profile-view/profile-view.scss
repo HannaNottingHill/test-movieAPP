@@ -1,0 +1,144 @@
+.profile-view-container {
+  color: #fff;
+
+  .second-title {
+    padding-bottom: 14px;
+  }
+  .user-info,
+  .updateUserAccount {
+    padding: 20px;
+
+    border-radius: 8px;
+
+    h2 {
+      color: #fff;
+    }
+
+    p {
+      color: #b3b3b3;
+    }
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    input {
+      padding: 10px;
+      background-color: #181818;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #fff;
+
+      &:focus {
+        outline: none;
+        border-color: #e50914;
+        box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.25);
+      }
+    }
+
+    button.update-profile-button {
+      padding: 10px 15px;
+      background-color: #757575; // A more subtle color for the update button
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken(#757575, 10%);
+      }
+    }
+
+    .profile-view-container .updateUserAccount #deleteAccountButton {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #b71c1c !important; // Dark red for the delete button
+      color: white !important;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken(#b71c1c, 10%);
+      }
+    }
+  }
+}
+
+.favorites-scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  position: relative; // Needed for absolute positioning of buttons
+  scroll-behavior: smooth; // Smooth scrolling effect
+
+  // Custom scrollbar styles
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+
+    .col {
+      display: inline-block;
+      margin-right: 10px;
+      transition: transform 0.3s; // For hover effect
+
+      &:hover {
+        transform: scale(1.05); // Slight zoom on hover
+      }
+    }
+  }
+
+  // Scroll buttons (left and right)
+  .scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+}
+
+.favorites-container > .row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

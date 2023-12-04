@@ -1,0 +1,16 @@
+body {
+  background-image: url("../components/images/background.webp"); // Adjust the path to your image
+  background-size: cover; // Cover the entire viewport
+  background-position: center; // Center the image
+  background-repeat: no-repeat; // Prevent image repetition
+  height: 100vh; // Set the background to cover the full viewport height
+
+  // Add cool effects (customize as needed)
+  filter: brightness(0.95); // Adjust brightness
+  opacity: 1; // Adjust opacity
+  // Add other effects like blur, grayscale, etc.
+}
+
+.card-hovered {
+  opacity: 1;
+}

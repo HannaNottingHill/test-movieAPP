@@ -1,0 +1,81 @@
+@import "../variables";
+@import "../variables";
+
+.movie-view-container {
+  background-color: $darker-color; // White background
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+
+  h1 {
+    padding-bottom: 20px;
+    color: darken($background-color, 30%);
+  }
+
+  .movie-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .movie-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .movie-details {
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: lighten($background-color, 2%);
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .description-button {
+    background-color: $light-color;
+    color: $darker-color;
+    border: 1px solid $darker-color;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: lighten($light-color, 30%);
+    }
+  }
+
+  .additional-details {
+    text-align: left;
+    margin-top: 20px;
+
+    p {
+      margin: 5px 0;
+    }
+  }
+
+  .back-button {
+    background-color: darken($background-color, 30%);
+    color: $text-color;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: darken($light-color, 5%);
+      border-color: lighten($text-color, 40%);
+      color: $text-color;
+    }
+  }
+}

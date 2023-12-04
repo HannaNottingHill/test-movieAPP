@@ -1,0 +1,45 @@
+/* Override React Bootstrap button styles */
+.btn-primary {
+  font-size: 18px !important; /* Increase button font size */
+  padding: 12px 24px !important; /* Increase button padding */
+  background-color: #210e1c !important; /* Change button background color */
+  color: #fff !important; /* Change button text color */
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #2b1915 !important; /* Adjust hover color */
+  }
+}
+
+/* Override React Bootstrap input styles */
+.form-control {
+  color: white !important;
+  font-size: 18px !important; /* Increase input font size */
+  padding: 1.2em !important;
+  outline: none !important;
+  border: 2px solid rgb(200, 200, 200) !important;
+  background-color: transparent !important;
+  border-radius: 20px !important;
+  width: 100% !important;
+
+  &:focus {
+    border-color: #2b1915 !important; /* Change border color when input is focused */
+  }
+}
+
+.inputGroup label {
+  font-size: 20px !important; /* Increase label font size */
+  padding: 1em 1.2em !important;
+}
+
+.error-message {
+  font-size: 16px !important; /* Increase error message font size */
+  margin-top: 15px !important;
+}
+
+.form-lable {
+  size: 36px !important;
+}

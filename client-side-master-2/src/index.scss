@@ -1,0 +1,9 @@
+@import "/src/components/variables";
+
+body,
+.app-container {
+  background-color: rgb(22, 26, 48);
+  color: rgb(240, 236, 229);
+}
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
